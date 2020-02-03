@@ -1,0 +1,85 @@
+﻿****************************************************************************************
+TP3 Update
+
+
+Skateboards
+- When player gets on a skateboard, they will move fast together without the influence of gravity and friction. The ball (representing player) will become larger and green when they are on the board.
+- Bears touched by skateboards will be knocked away
+- Player can drag skateboard directly to them or move it by pressing right and left arrows
+- When player hits the FREEZE button, it will stop falling.
+- After the player skied on the skateboard for a certain period of time, the skateboard will fall out of the screen.
+
+
+Complementary Modes & UI
+- An instruction screen is made, explaining the basic rules of this game. It happens in the form of a dynamic conversation between two characters. Players can move along the conversation by pressing right arrow.
+- In the welcome screen, players can pick the setting, level (which decides friction constant and the frequency bears appear), and enter mass in a textbox. After that, they can press ‘s’ to start right away or wait for the bear to hit the START button. They can also choose a quick start with all variables being randomly set. 
+- In win and end screen, they can go to record mode to check their PR and press k to restart another run.
+- In the upper left corner, player will be notified with their distance left (represented by a loading bar), elapsed time, and current velocity.
+- When players have used all accelerators and jumpers, clear texts will show up.
+- When a run is successfully finished, they will run into the animated bear and a hugging picture will show up in the middle of the screen.
+
+
+Jump
+-User can press ‘j’ to jump. The jump is also physics simulated.
+
+
+Others
+-fixed errors that caused many crashes during TP2
+-clean up the style of codes
+
+
+****************************************************************************************
+From TP1 Deliverable
+Project Proposal
+“Phyco-Skiing”
+My Project is to make a ski racing game with all motions being Physics simulated. The race course would be broken down into several sections, representing different math functions. And the player can control their motions with speeding up, jump, and stop. In more details, there would be gaps to be jumped across and steep hills that require certain speed to get over. If the speed is not enough, then the player would eventually lose the race (there is a time limit to finish). The time the player takes to finish will always be kept tracked of. And at any point, the player can always check their records(personal best,etc.) There are also going to be barriers on the course, such as white bears. White bears of different sizes would appear randomly on the course, and dependent on the mass of the bear and the location it appears (possibly both downhill and uphill), they will have different influences on the race. Before the start of each race, users can pick the difficulty level as well as setting (background) of their upcoming race with a GUI. 
+
+
+Analysis
+The inspiration behind this project is a video skiing game I enjoyed during childhood. I love the game for its exciting dynamics along with all the features it had. Having learned Physics and programming, I want to make the motions of the game more “real”, which is to add in more scientific preciseness. The player is subject to gravity, friction, slope angle, and collision(momentum change). The ideal effect is for the users to feel more in reality. Meanwhile, users can see their current velocity throughout the game, so that they could clearly see how the velocity is being changed based on topography. In this sense, it serves educational purpose to young kids, giving them an interactive introduction into the world of Physics. 
+
+
+* Structural Plan
+ The final project would present the users with a Graphic User Interface first, in which they could pick their desired setting and difficulty level as well as input their masses. After the user gives a command to start, then we will enter the animation part of the game, which includes several modes. A start (instruction) mode, a major game mode, an end mode (with options to get access to previous trials).  Each major element of the game itself, including the curve (race course), the player, and the barriers will be structured as classes. All methods (collision, velocity/acceleration of the player) will be written under each class. 
+
+
+* Algorithmic Plan
+        -Drawing the Curve (Core Code Part I)
+        The canvas will be partitioned into several ranges(x), and each section has a list of tuples with x and y. X is incremented by 1 each time, and a matching y will be calculated based on the unique formula of the curve. On a higher level, each section will be drawn with numerous lines, connecting one point to another. And it the end, it just looks like a smooth curve.
+-Acceleration, Friction, and Slope Angle (Core Code Part II)
+Each section of the race course is a representation of a different math function. At anywhere on the course, the acceleration of the ball is subject to gravity, slope angle, and friction. On most curves, tangent angle is constantly changing, and which will determine the magnitude as well as the direction of the friction force and gravity force. The tangent angle will be determined by the function drawing the curve. Since the player always needs to move above the curve, its y coordinate is determined is expressed as a function of x (matching the function of the curve it is on). In greater detail, move function for the player takes in dx (acceleration of player on horizontal direction) and within a certain range(x of the curve), its y and x are being guided by that formula.  
+
+
+
+
+Timeline Plan
+TP1:
+1. Race Course Drawn (elongated later)
+2. Player move along the course with the influence acceleration, friction, and slope angle
+3. Draw and Design the GUI
+4. Bears appear on the screen at random positions, size determined by mass
+5. Collision of player and bears
+        TP2: (MVP) Below are what will be added since TP1
+1. Bear dragging the player up and down (if not finished by TP1)
+2. Jumping motion of the player
+3. GUI fully functioning, getting all kinds of commands and inputs from user
+4. All modes well set up (switching between screens)
+5. User able to access information of their previous runs
+
+
+
+
+Version Control Plan:
+Codes updated to Github Daily, local files on my computers are also stored on iCloud.
+Module List:
+I am using features of tkinter that was not covered in class for GUI. All other models (random, math, etc) have been previously used for 112 assignments.
+
+
+****************************************************************************************
+From TP2 Deliverable
+TP2 Update:
+1.    My approach to drawing the curve and calculating acceleration (which I submitted for TP1) was found not functional and algorithmically naïve. So the majority of my last week was spent on changing and improving that part, which is the most difficult and core code of my project.
+2.    Besides that, I made my welcome mode functioning, now it is able to pass user’s input in Game Mode.
+3.    All bears can now fall right on the curve. Drag counter, momentum change, image switches and free fall motions are all functioning now.
+4.    For MVP, I want to make speeding up and jump working. There would not be any jumping over gap, but just regular jump along the curve (maybe to avoid bears).
+Another thought for MVP, I might attempt to get the ball rolling.
